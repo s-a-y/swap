@@ -1,3 +1,6 @@
-import * as logger from '../../logger';
+import './index.less';
 
-logger.log('Init widget');
+import Widget from './widget/widget';
+import './step-one/step-one';
+
+new Widget(); // eslint-disable-line
