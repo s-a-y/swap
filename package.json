@@ -24,6 +24,7 @@
     "babel-loader": "7.1.1",
     "babel-preset-env": "1.6.0",
     "css-loader": "0.28.4",
+    "csscomb": "4.2.0",
     "eslint": "4.4.1",
     "eslint-config-airbnb-base": "11.3.1",
     "eslint-plugin-import": "2.7.0",

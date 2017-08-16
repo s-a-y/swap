@@ -6,6 +6,7 @@ class ExchangeWidget {
     this.iframe.setAttribute('id', 'exchange-widget');
     this.iframe.setAttribute('src', this.origin);
     this.iframe.setAttribute('width', '100%');
+    this.iframe.setAttribute('style', 'border: none;');
     this.root.append(this.iframe);
 
     window.addEventListener('message', event => this.setIframeHeight(event));

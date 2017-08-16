@@ -1,13 +1,13 @@
 import './widget.less';
 
 export default class Widget {
-  constructor() {
-    window.addEventListener('load', this.postHeight);
-    window.addEventListener('resize', this.postHeight);
+  static postHeight() {
+    const body = document.querySelector('body');
+    window.parent.postMessage(body.offsetHeight, '*');
   }
 
-  postHeight() {
-    const body = document.querySelector('body');
-    this.parent.postMessage(body.offsetHeight, '*');
+  constructor() {
+    window.addEventListener('load', Widget.postHeight);
+    window.addEventListener('resize', Widget.postHeight);
   }
 }

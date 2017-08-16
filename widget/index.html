@@ -11,43 +11,70 @@
 <body>
   <div class="widget">
     <div class="widget__steps">
-      <!-- Start: Step one -->
-      <div class="widget__step _step-one">
-        <form>
-          <div class="form-group">
-            <label>You have</label>
-            <div class="form-group__control">
-              <input>
-              <select>
-                <option value="BTC">BTC</option>
-                <option value="XLM">XLM</option>
-              </select>
-            </div>
+      <!-- Start: Step currency -->
+      <form class="widget__step step-exchange">
+        <div class="form-group">
+          <label class="form-group__label">You have</label>
+          <div class="form-group__control">
+            <input class="form-group__input _long">
+            <select class="form-group__input _short">
+              <option value="BTC">BTC</option>
+              <option value="XLM">XLM</option>
+            </select>
           </div>
-          <div class="form-group">
-            <label>You get</label>
-            <div class="form-group__control">
-              <input>
-              <select>
-                <option value="BTC">BTC</option>
-                <option value="XLM">XLM</option>
-              </select>
-            </div>
+        </div>
+        <div class="form-group">
+          <label class="form-group__label">You get</label>
+          <div class="form-group__control">
+            <input class="form-group__input _long">
+            <select class="form-group__input _short">
+              <option value="BTC">BTC</option>
+              <option value="XLM">XLM</option>
+            </select>
           </div>
-          <div class="exchange-info">
-            <p>Exchange rate: <span>0.00000686</span> BTC/XLM</p>
-            <p>Miner Fee: <span>0.00001</span> XLM</p>
-            <p>Exchange Fee: <span>0</span>%</p>
-          </div>
-          <div class="widget__step-proceed">
-            <p>Proceed</p>
-            <p>and accept T&Cs</p>
-          </div>
-        </form>
-      </div>
-      <!-- End: Step one -->
+        </div>
+        <div class="step-exchange__info">
+          <p>Exchange rate: <span>0.00000686</span> BTC/XLM</p>
+          <p>Miner Fee: <span>0.00001</span> XLM</p>
+          <p>Exchange Fee: <span>0</span>%</p>
+        </div>
+        <div class="widget__step-proceed">
+          <p class="widget__step-proceed-title">Proceed</p>
+          <p class="widget__step-proceed-subtitle">and accept T&Cs</p>
+        </div>
+      </form>
+      <!-- End: Step currency -->
+
+      <!-- Start: Step account -->
+      <!--<form class="widget__step step-account">-->
+        <!--<div class="form-group">-->
+          <!--<label>Your Stellar account</label>-->
+          <!--<input>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+          <!--<label>Memo</label>-->
+          <!--<input>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+          <!--<label>Refund address</label>-->
+          <!--<input>-->
+        <!--</div>-->
+        <!--<div class="form-group">-->
+          <!--<label>Email</label>-->
+          <!--<input type="email">-->
+        <!--</div>-->
+        <!--<div class="widget__step-proceed">-->
+          <!--<p>Proceed</p>-->
+          <!--<p><span>1 BTC</span> -> <span>145690 XLM</span></p>-->
+        <!--</div>-->
+      <!--</form>-->
+      <!-- End: Step account -->
     </div>
-    <div class="widget__menu"></div>
+    <div class="widget__menu">
+      <span class="widget__menu-item" data-step="1"></span>
+      <span class="widget__menu-item" data-step="2"></span>
+      <span class="widget__menu-item" data-step="3"></span>
+    </div>
   </div>
 
   <script src="dist/bundle.js"></script>
