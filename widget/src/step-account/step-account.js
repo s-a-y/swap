@@ -1,1 +1,1 @@
-import './step-account.less';
+export default { };

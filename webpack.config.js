@@ -5,6 +5,36 @@ const extractSass = new ExtractTextPlugin({
   filename: 'bundle.css',
 });
 
+const jsLoader = {
+  test: /\.js$/,
+  exclude: /(node_modules)/,
+  use: {
+    loader: 'babel-loader',
+    options: {
+      presets: ['env'],
+    },
+  },
+};
+
+const lessLoader = {
+  test: /\.less$/,
+  use: extractSass.extract({
+    use: [{
+      loader: 'css-loader',
+    }, {
+      loader: 'less-loader',
+    }],
+  }),
+};
+
+const vueLoader = {
+  test: /\.vue$/,
+  loader: 'vue-loader',
+  options: {
+    extractCSS: true,
+  },
+};
+
 const widgetBundle = {
   entry: path.resolve(__dirname, 'widget/src/index.js'),
   output: {
@@ -12,25 +42,7 @@ const widgetBundle = {
     path: path.resolve(__dirname, 'widget/dist'),
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /(node_modules)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['env'],
-        },
-      },
-    }, {
-      test: /\.less$/,
-      use: extractSass.extract({
-        use: [{
-          loader: 'css-loader',
-        }, {
-          loader: 'less-loader',
-        }],
-      }),
-    }],
+    rules: [jsLoader, lessLoader, vueLoader],
   },
   plugins: [
     extractSass,
@@ -44,16 +56,7 @@ const creatorBundle = {
     path: path.resolve(__dirname, 'widget/dist'),
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: /(node_modules)/,
-      use: {
-        loader: 'babel-loader',
-        options: {
-          presets: ['env'],
-        },
-      },
-    }],
+    rules: [jsLoader],
   },
 };
 

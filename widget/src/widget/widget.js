@@ -1,13 +1,31 @@
-import './widget.less';
+import StepExchange from '../step-exchange/step-exchange.vue';
+import StepAccount from '../step-account/step-account.vue';
 
-export default class Widget {
-  static postHeight() {
-    const body = document.querySelector('body');
-    window.parent.postMessage(body.offsetHeight, '*');
-  }
+export default {
+  name: 'widget',
+  data() {
+    const steps = ['exchange', 'account'];
 
-  constructor() {
-    window.addEventListener('load', Widget.postHeight);
-    window.addEventListener('resize', Widget.postHeight);
-  }
-}
+    return {
+      steps,
+      step: steps[0],
+    };
+  },
+  components: {
+    StepAccount,
+    StepExchange,
+  },
+  methods: {
+    postHeight() {
+      const body = document.querySelector('body');
+      window.parent.postMessage(body.offsetHeight, '*');
+    },
+    handlerChangeStep(step) {
+      this.step = step;
+    },
+  },
+  created() {
+    window.addEventListener('resize', this.postHeight);
+    this.postHeight();
+  },
+};

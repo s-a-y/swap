@@ -1,6 +1,10 @@
+import Vue from 'vue';
+
 import './index.less';
 
-import Widget from './widget/widget';
-import './step-exchange/step-exchange';
+import Widget from './widget/widget.vue';
 
-new Widget(); // eslint-disable-line
+new Vue({ // eslint-disable-line
+  el: '#widget',
+  render: createElement => createElement(Widget),
+});

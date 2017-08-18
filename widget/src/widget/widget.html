@@ -1,0 +1,9 @@
+<div class="widget">
+  <div class="widget__steps">
+    <step-account v-if="step === 'account'"></step-account>
+    <step-exchange v-if="step === 'exchange'"></step-exchange>
+  </div>
+  <div class="widget__menu">
+    <span v-for="(s, i) in steps" class="widget__menu-item" v-on:click="handlerChangeStep(s)"></span>
+  </div>
+</div>

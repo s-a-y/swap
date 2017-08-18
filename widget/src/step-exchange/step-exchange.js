@@ -1,1 +1,1 @@
-import './step-exchange.less';
+export default { };
