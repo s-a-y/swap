@@ -3,10 +3,12 @@
     <div class="form-group">
       <label class="form-group__label">You have</label>
       <div class="form-group__control">
-        <input class="form-group__input _long">
-        <select class="form-group__input _short">
-          <option value="BTC">BTC</option>
-          <option value="XLM">XLM</option>
+        <input class="form-group__input _long" disabled>
+        <select class="form-group__input _short" v-model="currencyFrom">
+          <option v-for="currency in currencies"
+                  v-bind:value="currency.value"
+                  v-on:changeCurrency
+          >{{currency.label}}</option>
         </select>
       </div>
     </div>
@@ -14,9 +16,11 @@
       <label class="form-group__label">You get</label>
       <div class="form-group__control">
         <input class="form-group__input _long">
-        <select class="form-group__input _short">
-          <option value="BTC">BTC</option>
-          <option value="XLM">XLM</option>
+        <select class="form-group__input _short" v-model="currencyTo">
+          <option v-for="currency in currencies"
+                  v-bind:value="currency.value"
+                  v-bind:disabled="currency.value === currencyFrom"
+          >{{currency.label}}</option>
         </select>
       </div>
     </div>
@@ -27,7 +31,7 @@
     </div>
   </div>
   <div class="widget__step-controls">
-    <div class="widget__step-proceed">
+    <div class="widget__step-proceed" v-on:click="handlerCompleteStep">
       <p class="widget__step-proceed-title">Proceed</p>
       <p class="widget__step-proceed-subtitle">and accept T&Cs</p>
     </div>

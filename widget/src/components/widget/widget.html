@@ -5,6 +5,6 @@
     <step-finish v-if="step === 'finish'" v-on:reset="handlerReset"></step-finish>
   </div>
   <div class="widget__menu">
-    <span v-for="(s, i) in steps" class="widget__menu-item" v-on:click="handlerChangeStep(s)"></span>
+    <span v-for="s in steps" class="widget__menu-item" v-on:click="handlerChangeStep(s)"></span>
   </div>
 </div>
