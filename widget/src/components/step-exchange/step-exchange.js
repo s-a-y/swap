@@ -32,13 +32,6 @@ export default {
         .then(({ data }) => {
           const rate = rateParser(data);
           Object.assign(this, rate);
-          // this.amountFrom = rate.amountFrom;
-          // this.amountTo = rate.amountTo;
-          // this.currencyFrom = rate.currencyFrom;
-          // this.currencyTo = rate.currencyTo;
-          // this.minerFee = rate.minerFee;
-          // this.exchangeFee = rate.exchangeFee;
-          // this.exchangeRate = rate.exchangeRate;
         });
     },
     handlerChangeAmountTo: debounce(function changeAmountTo() {
@@ -49,6 +42,9 @@ export default {
       this.currencyFrom = currencyFrom.value;
       this.amountTo = this.amountFrom;
       this.amountFrom = null;
+      this.minerFee = null;
+      this.exchangeFee = null;
+      this.exchangeRate = null;
       this.updateRates();
     },
   },

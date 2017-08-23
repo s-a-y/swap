@@ -3,7 +3,10 @@
     <div class="form-group">
       <label class="form-group__label">Receive</label>
       <div class="form-group__control">
-        <input class="form-group__input _long" v-model="amountTo" v-on:input="handlerChangeAmountTo">
+        <input class="form-group__input _long"
+               type="number"
+               v-model="amountTo"
+               v-on:input="handlerChangeAmountTo">
         <select class="form-group__input _short" v-model="currencyTo" v-on:change="handlerChangeCurrencyTo">
           <option v-for="currency in currencies" v-bind:value="currency.value">{{currency.label}}</option>
         </select>
