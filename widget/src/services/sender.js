@@ -15,9 +15,9 @@ class Sender {
     this.request = request;
   }
 
-  getRates(currencyFrom, currencyTo, amount) {
+  getRates(currencyFrom, currencyTo, amountTo) {
     const fromParam = buildCurrencyParam(currencyFrom);
-    const toParam = buildCurrencyParam(currencyTo, amount);
+    const toParam = buildCurrencyParam(currencyTo, amountTo);
     const url = `${this.api}/rates?from=${fromParam}&to=${toParam}`;
     return this.request.get(url);
   }

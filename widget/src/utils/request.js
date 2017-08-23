@@ -2,6 +2,14 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
+function parseResponse(text) {
+  try {
+    return JSON.parse(text);
+  } catch (err) {
+    return text;
+  }
+}
+
 function request(method, url, data) {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
@@ -15,12 +23,7 @@ function request(method, url, data) {
     Object.keys(headers).forEach(header => xhr.setRequestHeader(header, headers[header]));
     xhr.send(data);
   }).then((xhr) => {
-    let responseData = xhr.responseText;
-
-    if (xhr.responseType === 'json') {
-      responseData = JSON.parse(responseData);
-    }
-
+    const responseData = parseResponse(xhr.responseText);
     return {
       status: xhr.status,
       data: responseData,

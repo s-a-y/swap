@@ -1,27 +1,51 @@
 import { currencies } from '../../configs';
 import sender from '../../services/sender';
+import rateParser from '../../utils/rateParser';
+import debounce from '../../utils/debounce';
 
 export default {
+  props: ['initialCurrencyFrom', 'initialCurrencyTo', 'initialAmountTo'],
   data() {
-    const currencyFrom = currencies[0];
-    const currencyTo = currencies.find(currency => currency.value !== currencyFrom.value);
-
     return {
       currencies,
-      currencyFrom: currencyFrom.value,
-      currencyTo: currencyTo.value,
+      currencyFrom: this.initialCurrencyFrom,
+      currencyTo: this.initialCurrencyTo,
+      amountTo: this.initialAmountTo,
+      amountFrom: null,
     };
   },
   methods: {
     handlerCompleteStep() {
+      this.$emit('complete', {
+        amountFrom: this.amountFrom,
+        amountTo: this.amountTo,
+        currencyFrom: this.currencyFrom,
+        currencyTo: this.currencyTo,
+      });
+    },
+    updateRates() {
       sender
-        .getRates('BTC', 'XLM', 145600);
+        .getRates(this.currencyFrom, this.currencyTo, this.amountTo)
+        .then(({ data }) => {
+          const rate = rateParser(data);
+          this.amountFrom = rate.amountFrom;
+          this.amountTo = rate.amountTo;
+          this.currencyFrom = rate.currencyFrom;
+          this.currencyTo = rate.currencyTo;
+        });
+    },
+    handlerChangeAmountTo: debounce(function changeAmountTo() {
+      this.updateRates();
+    }, 300),
+    handlerChangeCurrencyTo() {
+      const currencyFrom = currencies.find(currency => currency.value !== this.currencyTo);
+      this.currencyFrom = currencyFrom.value;
+      this.amountTo = this.amountFrom;
+      this.amountFrom = null;
+      this.updateRates();
     },
   },
-  watch: {
-    currencyFrom(currencyFrom) {
-      const currencyTo = currencies.find(currency => currency.value !== currencyFrom);
-      this.currencyTo = currencyTo.value;
-    },
+  created() {
+    this.updateRates();
   },
 };

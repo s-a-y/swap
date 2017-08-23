@@ -28,4 +28,4 @@ export const memoTypes = [
   },
 ];
 
-export const api = 'https://demo7601661.mockable.io';
+export const api = 'https://us-central1-project-8529393868063504014.cloudfunctions.net';

@@ -1,7 +1,17 @@
 <div class="widget">
   <div class="widget__steps">
-    <step-account v-if="step === 'account'"></step-account>
-    <step-exchange v-if="step === 'exchange'"></step-exchange>
+    <step-account v-if="step === 'account'"
+                  :currency-from="exchange.currencyFrom"
+                  :currency-to="exchange.currencyTo"
+                  :amount-from="exchange.amountFrom"
+                  :amount-to="exchange.amountTo"
+    ></step-account>
+    <step-exchange v-if="step === 'exchange'"
+                   :initial-currency-from="exchange.currencyFrom"
+                   :initial-currency-to="exchange.currencyTo"
+                   :initial-amount-to="exchange.amountTo"
+                   v-on:complete="handlerCompleteStep"
+    ></step-exchange>
     <step-finish v-if="step === 'finish'" v-on:reset="handlerReset"></step-finish>
   </div>
   <div class="widget__menu">
