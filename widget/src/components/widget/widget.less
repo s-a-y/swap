@@ -1,14 +1,16 @@
+@import '../../variables';
+
 @menu-item-color: #929292;
+@menu-item-color-active: #66afe9;
 
 .widget {
-  padding: 10px;
-  border: 1px solid #000;
+  padding: 0;
 }
 
 .widget__step {
   display: flex;
   flex-direction: column;
-  min-height: 325px;
+  min-height: 350px;
 
   justify-content: space-between;
 }
@@ -36,13 +38,23 @@
     background: @menu-item-color;
     content: '';
   }
+
+  &._active {
+    border-color: @menu-item-color-active;
+
+    &:after {
+      background: @menu-item-color-active;
+    }
+  }
 }
 
 .widget__step-proceed {
   margin: 0 10px;
   padding: 15px 5px;
-  border: 1px solid black;
-  border-radius: 15px;
+  border: 1px solid @btn-border-color;
+  border-radius: @border-radius;
+  background: @btn-bg;
+  color: @btn-color;
   text-align: center;
   font-size: 16px;
   cursor: pointer;
@@ -56,7 +68,8 @@
   }
 
   &:hover {
-    background: #e5e5e5;
+    border-color: @btn-border-color;
+    background: @btn-bg-hover;
   }
 }
 
