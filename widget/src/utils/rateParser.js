@@ -7,5 +7,8 @@ export default function currencyParser(data) {
     amountTo: Number(to[0]),
     currencyFrom: from[1],
     currencyTo: to[1],
+    exchangeFee: data.feePercent,
+    exchangeRate: data.rate,
+    minerFee: data.minerFee,
   };
 }

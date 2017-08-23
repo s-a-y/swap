@@ -12,6 +12,9 @@ export default {
       currencyTo: this.initialCurrencyTo,
       amountTo: this.initialAmountTo,
       amountFrom: null,
+      minerFee: null,
+      exchangeFee: null,
+      exchangeRate: null,
     };
   },
   methods: {
@@ -28,10 +31,14 @@ export default {
         .getRates(this.currencyFrom, this.currencyTo, this.amountTo)
         .then(({ data }) => {
           const rate = rateParser(data);
-          this.amountFrom = rate.amountFrom;
-          this.amountTo = rate.amountTo;
-          this.currencyFrom = rate.currencyFrom;
-          this.currencyTo = rate.currencyTo;
+          Object.assign(this, rate);
+          // this.amountFrom = rate.amountFrom;
+          // this.amountTo = rate.amountTo;
+          // this.currencyFrom = rate.currencyFrom;
+          // this.currencyTo = rate.currencyTo;
+          // this.minerFee = rate.minerFee;
+          // this.exchangeFee = rate.exchangeFee;
+          // this.exchangeRate = rate.exchangeRate;
         });
     },
     handlerChangeAmountTo: debounce(function changeAmountTo() {

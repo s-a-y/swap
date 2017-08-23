@@ -19,9 +19,9 @@
       </div>
     </div>
     <div class="step-exchange__info">
-      <p>Exchange rate: <span>0.00000686</span> BTC/XLM</p>
-      <p>Miner Fee: <span>0.00001</span> XLM</p>
-      <p>Exchange Fee: <span>0</span>%</p>
+      <p v-if="exchangeRate">Exchange rate: {{exchangeRate}} {{currencyTo}}/{{currencyFrom}}</p>
+      <p v-if="minerFee">Miner Fee: {{minerFee}} {{currencyFrom}}</p>
+      <p v-if="exchangeFee">Exchange Fee: {{exchangeFee}}%</p>
     </div>
   </div>
   <div class="widget__step-controls">
