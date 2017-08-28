@@ -12,20 +12,20 @@ export const currencies = [
 export const memoTypes = [
   {
     label: 'TEXT',
-    value: 'MEMO_TEXT',
+    value: 'text',
   },
   {
     label: 'ID',
-    value: 'MEMO_ID',
+    value: 'id',
   },
   {
     label: 'HASH',
-    value: 'MEMO_HASH',
+    value: 'hash',
   },
-  {
-    label: 'RETURN',
-    value: 'MEMO_RETURN',
-  },
+  // {
+  //   label: 'RETURN',
+  //   value: 'MEMO_RETURN',
+  // },
 ];
 
 export const api = 'https://us-central1-project-8529393868063504014.cloudfunctions.net';

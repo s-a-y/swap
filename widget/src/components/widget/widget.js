@@ -1,6 +1,7 @@
 import StepExchange from '../step-exchange/step-exchange.vue';
 import StepAccount from '../step-account/step-account.vue';
 import StepFinish from '../step-finish/step-finish.vue';
+import Info from '../info/info.vue';
 
 class Exchange {
   constructor() {
@@ -22,6 +23,7 @@ export default {
     };
   },
   components: {
+    Info,
     StepAccount,
     StepExchange,
     StepFinish,
@@ -31,7 +33,7 @@ export default {
       const body = document.querySelector('body');
       window.parent.postMessage(body.offsetHeight, '*');
     },
-    handlerNextStep() {
+    nextStep() {
       const stepIndex = this.steps.findIndex(step => step === this.step);
       this.step = this.steps[stepIndex + 1];
     },
@@ -43,10 +45,12 @@ export default {
       this.step = this.steps[0];
     },
     handlerCompleteStep(data) {
-      Object.keys(data).forEach((key) => {
-        this.exchange[key] = data[key];
-      });
-      this.handlerNextStep();
+      if (data) {
+        Object.keys(data).forEach((key) => {
+          this.exchange[key] = data[key];
+        });
+      }
+      this.nextStep();
     },
   },
   created() {

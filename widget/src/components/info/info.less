@@ -1,0 +1,47 @@
+@import '../../variables';
+
+.info__close,
+.info__open {
+  position: fixed;
+  right: 5px;
+  bottom: 5px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  outline: none;
+  border: none;
+  border-radius: 50%;
+  background: #fff no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.info__open {
+  background-image: url(../../svg/info.svg);
+}
+
+.info__close {
+  background-image: url(../../svg/close.svg);
+}
+
+.info__body {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: @body-padding;
+  background: #fff;
+}
+
+.info__contacts {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.info__contact {
+  margin: 0 0 5px;
+}

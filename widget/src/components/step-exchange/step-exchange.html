@@ -23,7 +23,7 @@
     </div>
     <div class="step-exchange__info">
       <p v-if="exchangeRate">Exchange rate: {{exchangeRate}} {{currencyTo}}/{{currencyFrom}}</p>
-      <p v-if="minerFee">Miner Fee: {{minerFee}} {{currencyFrom}}</p>
+      <p v-if="minerFee">Miner Fee: {{minerFee}} {{currencyTo}}</p>
       <p v-if="exchangeFee">Exchange Fee: {{exchangeFee}}%</p>
     </div>
   </div>

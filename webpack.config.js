@@ -35,6 +35,15 @@ const vueLoader = {
   },
 };
 
+const fileLoader = {
+  test: /\.svg$/,
+  loader: 'file-loader',
+  options: {
+    name: '[name].[ext]',
+    outputPath: 'public/',
+  },
+};
+
 const widgetBundle = {
   entry: path.resolve(__dirname, 'widget/src/index.js'),
   output: {
@@ -42,7 +51,7 @@ const widgetBundle = {
     path: path.resolve(__dirname, 'widget/dist'),
   },
   module: {
-    rules: [jsLoader, lessLoader, vueLoader],
+    rules: [jsLoader, lessLoader, vueLoader, fileLoader],
   },
   plugins: [
     extractSass,
