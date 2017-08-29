@@ -1,4 +1,4 @@
-@import '../../variables';
+@import '../../less/variables';
 
 @menu-item-color: #929292;
 @menu-item-color-active: #66afe9;
@@ -10,7 +10,7 @@
 .widget__step {
   display: flex;
   flex-direction: column;
-  min-height: 350px;
+  min-height: 370px;
 
   justify-content: space-between;
 }
@@ -51,13 +51,6 @@
 .widget__step-proceed {
   margin: 0 10px;
   padding: 15px 5px;
-  border: 1px solid @btn-border-color;
-  border-radius: @border-radius;
-  background: @btn-bg;
-  color: @btn-color;
-  text-align: center;
-  font-size: 16px;
-  cursor: pointer;
 
    > p {
     margin: 0 0 5px;
@@ -65,11 +58,6 @@
     &:last-child {
       margin: 0;
     }
-  }
-
-  &:hover {
-    border-color: @btn-border-color;
-    background: @btn-bg-hover;
   }
 }
 

@@ -1,0 +1,14 @@
+<div class="widget__step step-end">
+  <div class="widget__step-body">
+    <!--<start-over @reset="handlerReset"></start-over>-->
+    <start-over @reset="confirmPayment"></start-over>
+    <transfer v-if="!paymentReceived"
+              :address="address"
+              :qr="qr"
+    ></transfer>
+    <payment v-if="paymentReceived"></payment>
+  </div>
+  <div class="widget__step-controls">
+    <help></help>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="info">
-  <button class="info__open" type="button" v-on:click="open"></button>
+  <button class="info__open" type="button" @click="open"></button>
   <div v-if="isOpen" class="info__body">
-    <button class="info__close" type="button" v-on:click="close"></button>
+    <button class="info__close" type="button" @click="close"></button>
     <p>Widget provides an option to exchange one cryptocurrency to another without centralized exchange</p>
     <p><i>Povered by Papaya</i></p>
     <ul class="info__contacts">

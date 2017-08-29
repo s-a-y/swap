@@ -6,9 +6,9 @@
         <input class="form-group__input _long"
                type="number"
                v-model="amountTo"
-               v-on:input="handlerChangeAmountTo">
-        <select class="form-group__input _short" v-model="currencyTo" v-on:change="handlerChangeCurrencyTo">
-          <option v-for="currency in currencies" v-bind:value="currency.value">{{currency.label}}</option>
+               @input="handlerChangeAmountTo">
+        <select class="form-group__input _short" v-model="currencyTo" @change="handlerChangeCurrencyTo">
+          <option v-for="currency in currencies" :value="currency.value">{{currency.label}}</option>
         </select>
       </div>
     </div>
@@ -17,7 +17,7 @@
       <div class="form-group__control">
         <input class="form-group__input _long" v-model="amountFrom" disabled>
         <select class="form-group__input _short" v-model="currencyFrom" disabled>
-          <option v-for="currency in currencies" v-bind:value="currency.value">{{currency.label}}</option>
+          <option v-for="currency in currencies" :value="currency.value">{{currency.label}}</option>
         </select>
       </div>
     </div>
@@ -28,7 +28,7 @@
     </div>
   </div>
   <div class="widget__step-controls">
-    <div class="widget__step-proceed" v-on:click="handlerCompleteStep">
+    <div class="widget__step-proceed btn" @click="handlerCompleteStep">
       <p class="widget__step-proceed-title">Proceed</p>
       <p class="widget__step-proceed-subtitle">and accept T&Cs</p>
     </div>

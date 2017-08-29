@@ -8,7 +8,7 @@
       <label class="form-group__label">Memo</label>
       <div class="form-group__control">
         <select class="form-group__input _short">
-          <option v-for="memoType in memoTypes" v-bind:value="memoType.value">{{memoType.label}}</option>
+          <option v-for="memoType in memoTypes" :value="memoType.value">{{memoType.label}}</option>
         </select>
         <input class="form-group__input _long">
       </div>
@@ -23,7 +23,7 @@
     </div>
   </div>
   <div class="widget__step-controls">
-    <div class="widget__step-proceed">
+    <div class="widget__step-proceed btn" @click="handlerCompleteStep">
       <p class="widget__step-proceed-title">Proceed</p>
       <p class="widget__step-proceed-subtitle">
         <span>{{amountFrom}} {{currencyFrom}}</span> -> <span>{{amountTo}} {{currencyTo}}</span>

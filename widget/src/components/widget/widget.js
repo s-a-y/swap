@@ -1,6 +1,6 @@
 import StepExchange from '../step-exchange/step-exchange.vue';
 import StepAccount from '../step-account/step-account.vue';
-import StepFinish from '../step-finish/step-finish.vue';
+import StepEnd from '../step-end/step-end.vue';
 import Info from '../info/info.vue';
 
 class Exchange {
@@ -14,7 +14,7 @@ class Exchange {
 export default {
   name: 'widget',
   data() {
-    const steps = ['exchange', 'account', 'finish'];
+    const steps = ['exchange', 'account', 'end'];
 
     return {
       steps,
@@ -26,7 +26,7 @@ export default {
     Info,
     StepAccount,
     StepExchange,
-    StepFinish,
+    StepEnd,
   },
   methods: {
     postHeight() {

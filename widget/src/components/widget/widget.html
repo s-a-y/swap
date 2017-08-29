@@ -1,23 +1,29 @@
 <div class="widget">
   <div class="widget__steps">
+    <step-exchange v-if="step === 'exchange'"
+                   :initial-currency-from="exchange.currencyFrom"
+                   :initial-currency-to="exchange.currencyTo"
+                   :initial-amount-to="exchange.amountTo"
+                   @complete="handlerCompleteStep"
+    ></step-exchange>
     <step-account v-if="step === 'account'"
                   :currency-from="exchange.currencyFrom"
                   :currency-to="exchange.currencyTo"
                   :amount-from="exchange.amountFrom"
                   :amount-to="exchange.amountTo"
+                  @complete="handlerCompleteStep"
     ></step-account>
-    <step-exchange v-if="step === 'exchange'"
-                   :initial-currency-from="exchange.currencyFrom"
-                   :initial-currency-to="exchange.currencyTo"
-                   :initial-amount-to="exchange.amountTo"
-                   v-on:complete="handlerCompleteStep"
-    ></step-exchange>
-    <step-finish v-if="step === 'finish'" v-on:reset="handlerReset"></step-finish>
+    <step-end v-if="step === 'end'"
+              :address="exchange.address"
+              :qr="exchange.qr"
+              @reset="handlerReset"
+              @complete="handlerCompleteStep"
+    ></step-end>
   </div>
   <div class="widget__menu">
     <span v-for="s in steps"
-          class="widget__menu-item" v-on:click="handlerChangeStep(s)"
-          v-bind:class="{ _active: s === step }"
+          class="widget__menu-item" @click="handlerChangeStep(s)"
+          :class="{ _active: s === step }"
     ></span>
   </div>
   <info></info>

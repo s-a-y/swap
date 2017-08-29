@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import './index.less';
+import './less/index.less';
 
 import Widget from './components/widget/widget.vue';
 
