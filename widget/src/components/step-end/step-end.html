@@ -2,6 +2,8 @@
   <div class="widget__step-body">
     <start-over @reset="handlerReset"></start-over>
     <transfer v-if="!paymentReceived"
+              :currency-from="currencyFrom"
+              :amount-from="amountFrom"
               :address="address"
               :qr="qr"
     ></transfer>

@@ -1,7 +1,7 @@
 import TransferAddress from './transfer-address/transfer-address.vue';
 
 export default {
-  props: ['address', 'qr'],
+  props: ['currencyFrom', 'amountFrom', 'address', 'qr'],
   components: {
     TransferAddress,
   },
