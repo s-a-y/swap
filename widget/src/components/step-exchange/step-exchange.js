@@ -15,10 +15,15 @@ export default {
       minerFee: null,
       exchangeFee: null,
       exchangeRate: null,
+      controlDisabled: true,
     };
   },
   methods: {
     handlerCompleteStep() {
+      if (this.isControlDisabled()) {
+        return;
+      }
+
       this.$emit('complete', {
         amountFrom: this.amountFrom,
         amountTo: this.amountTo,
@@ -46,6 +51,13 @@ export default {
       this.exchangeFee = null;
       this.exchangeRate = null;
       this.updateRates();
+    },
+    isControlDisabled() {
+      if (this.currencyFrom && this.currencyTo && this.amountFrom && this.amountTo) {
+        return false;
+      }
+
+      return true;
     },
   },
   created() {

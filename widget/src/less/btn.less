@@ -15,4 +15,11 @@
     border-color: @btn-border-color;
     background-color: @btn-bg-hover;
   }
+
+  &:disabled,
+  &._disabled {
+    box-shadow: none;
+    opacity: .65;
+    cursor: not-allowed;
+  }
 }
