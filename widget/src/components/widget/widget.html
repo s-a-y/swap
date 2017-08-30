@@ -14,6 +14,7 @@
                   @complete="handlerCompleteStep"
     ></step-account>
     <step-end v-if="step === 'end'"
+              :id="exchange.id"
               :address="exchange.address"
               :qr="exchange.qr"
               @reset="handlerReset"

@@ -1,10 +1,12 @@
+import database from '../../services/database';
+
 import Help from './help/help.vue';
 import StartOver from './start-over/start-over.vue';
 import Payment from './payment/payment.vue';
 import Transfer from './transfer/transfer.vue';
 
 export default {
-  props: ['address', 'qr'],
+  props: ['id', 'address', 'qr'],
   data() {
     return {
       paymentReceived: false,
@@ -20,8 +22,15 @@ export default {
     handlerReset() {
       this.$emit('reset');
     },
-    confirmPayment() {
-      this.paymentReceived = true;
-    },
+  },
+  created() {
+    this.orderRef = database.orderPaidRef(this.id);
+    this.orderRef.on('value', (snapshot) => {
+      const value = snapshot.val();
+      this.paymentReceived = Boolean(value);
+    });
+  },
+  destroyed() {
+    this.orderRef.off();
   },
 };

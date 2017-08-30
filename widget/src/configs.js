@@ -29,3 +29,4 @@ export const memoTypes = [
 ];
 
 export const api = 'https://us-central1-project-8529393868063504014.cloudfunctions.net';
+export const databaseURL = 'https://papay.firebaseio.com';

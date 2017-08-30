@@ -16,7 +16,7 @@ export default {
         .getTransfer(this.currencyFrom, this.currencyTo, this.amountTo, address)
         .then(({ data }) => {
           this.$emit('complete', {
-            id: data.amountTo,
+            id: data.id,
             address: data.address,
             url: data.url,
             qr: data.qr,
