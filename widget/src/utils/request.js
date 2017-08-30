@@ -15,20 +15,30 @@ function request(method, url, data) {
     const xhr = new XMLHttpRequest();
     xhr.open(method, url, true);
     xhr.onload = () => {
-      resolve(xhr);
+      if (xhr.status > 199 && xhr.status < 300) {
+        resolve(xhr);
+      } else {
+        reject(xhr);
+      }
     };
     xhr.onerror = () => {
       reject(xhr);
     };
     Object.keys(headers).forEach(header => xhr.setRequestHeader(header, headers[header]));
     xhr.send(data);
-  }).then((xhr) => {
-    const responseData = parseResponse(xhr.responseText);
-    return {
-      status: xhr.status,
-      data: responseData,
-    };
-  });
+  }).then(
+    (xhr) => {
+      const responseData = parseResponse(xhr.responseText);
+      return {
+        status: xhr.status,
+        data: responseData,
+      };
+    },
+    (xhr) => {
+      // TODO: Add http error class
+      throw new Error(xhr.status);
+    },
+  );
 }
 
 export default {

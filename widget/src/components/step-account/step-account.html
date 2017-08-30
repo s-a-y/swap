@@ -1,16 +1,16 @@
 <form class="widget__step step-account">
   <div class="widget__step-body">
     <div class="form-group">
-      <label class="form-group__label">Your Stellar account</label>
-      <input class="form-group__input">
+      <label class="form-group__label">Your Stellar account <span>*</span></label>
+      <input class="form-group__input" v-model="account" @input="handlerInputAccount">
     </div>
     <div class="form-group">
-      <label class="form-group__label">Memo</label>
+      <label class="form-group__label">Memo <span>*</span></label>
       <div class="form-group__control">
-        <select class="form-group__input _short">
+        <select class="form-group__input _short" v-model="extra1" :disabled="disableExtra">
           <option v-for="memoType in memoTypes" :value="memoType.value">{{memoType.label}}</option>
         </select>
-        <input class="form-group__input _long">
+        <input class="form-group__input _long" v-model="extra2" :disabled="disableExtra">
       </div>
     </div>
     <div class="form-group">
@@ -23,7 +23,10 @@
     </div>
   </div>
   <div class="widget__step-controls">
-    <div class="widget__step-proceed btn" @click="handlerCompleteStep">
+    <div class="widget__step-proceed btn"
+         :class="{ _disabled: isControlDisabled() }"
+         @click="handlerCompleteStep"
+    >
       <p class="widget__step-proceed-title">Proceed</p>
       <p class="widget__step-proceed-subtitle">
         <span>{{amountFrom}} {{currencyFrom}}</span> -> <span>{{amountTo}} {{currencyTo}}</span>

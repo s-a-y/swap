@@ -4,13 +4,13 @@ import rateParser from '../../utils/rateParser';
 import debounce from '../../utils/debounce';
 
 export default {
-  props: ['initialCurrencyFrom', 'initialCurrencyTo', 'initialAmountTo'],
+  props: ['exchange'],
   data() {
     return {
       currencies,
-      currencyFrom: this.initialCurrencyFrom,
-      currencyTo: this.initialCurrencyTo,
-      amountTo: this.initialAmountTo,
+      currencyFrom: this.exchange.currencyFrom,
+      currencyTo: this.exchange.currencyTo,
+      amountTo: this.exchange.amountTo,
       amountFrom: null,
       minerFee: null,
       exchangeFee: null,

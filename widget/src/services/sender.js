@@ -34,8 +34,13 @@ class Sender {
     const toParam = buildCurrencyParam(currencyTo, amountTo);
     let url = `${this.api}/orders?from=${fromParam}&to=${toParam}&address=${address}`;
     if (optional) {
-      url += optionalToParams(optional);
+      url += `&${optionalToParams(optional)}`;
     }
+    return this.request.get(url);
+  }
+
+  getFederation(account) {
+    const url = `${this.api}/federation?q=${account}`;
     return this.request.get(url);
   }
 }

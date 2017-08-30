@@ -1,18 +1,7 @@
 <div class="widget">
   <div class="widget__steps">
-    <step-exchange v-if="step === 'exchange'"
-                   :initial-currency-from="exchange.currencyFrom"
-                   :initial-currency-to="exchange.currencyTo"
-                   :initial-amount-to="exchange.amountTo"
-                   @complete="handlerCompleteStep"
-    ></step-exchange>
-    <step-account v-if="step === 'account'"
-                  :currency-from="exchange.currencyFrom"
-                  :currency-to="exchange.currencyTo"
-                  :amount-from="exchange.amountFrom"
-                  :amount-to="exchange.amountTo"
-                  @complete="handlerCompleteStep"
-    ></step-account>
+    <step-exchange v-if="step === 'exchange'" :exchange="exchange" @complete="handlerCompleteStep"></step-exchange>
+    <step-account v-if="step === 'account'" :exchange="exchange" @complete="handlerCompleteStep"></step-account>
     <step-end v-if="step === 'end'"
               :currency-from="exchange.currencyFrom"
               :amount-from="exchange.amountFrom"
