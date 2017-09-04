@@ -23,27 +23,30 @@
 
 .widget__menu-item {
   display: inline-block;
+  box-sizing: border-box;
   margin: 0 2px;
   padding: 2px;
-  border: 1px solid @menu-item-color;
+  width: 14px;
+  height: 14px;
+  border: 2px solid @menu-item-color;
   border-radius: 50%;
   background: #fff;
   cursor: pointer;
 
-  &:after {
-    display: block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: @menu-item-color;
-    content: '';
+  &:hover {
+    border-color: @menu-item-color-active;
   }
 
   &._active {
     border-color: @menu-item-color-active;
 
     &:after {
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
       background: @menu-item-color-active;
+      content: '';
     }
   }
 }

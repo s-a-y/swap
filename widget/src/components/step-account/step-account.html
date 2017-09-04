@@ -5,7 +5,7 @@
       <input class="form-group__input" v-model="account" @input="handlerInputAccount">
     </div>
     <div class="form-group">
-      <label class="form-group__label">Memo <span>*</span></label>
+      <label class="form-group__label">Memo</label>
       <div class="form-group__control">
         <select class="form-group__input _short" v-model="extra1" :disabled="disableExtra">
           <option v-for="memoType in memoTypes" :value="memoType.value">{{memoType.label}}</option>
