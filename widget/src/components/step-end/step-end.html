@@ -7,7 +7,7 @@
               :address="address"
               :qr="qr"
     ></transfer>
-    <payment v-if="paymentReceived"></payment>
+    <payment v-if="paymentReceived" :currency-from="currencyFrom"></payment>
   </div>
   <div class="widget__step-controls">
     <help></help>

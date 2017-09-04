@@ -3,11 +3,7 @@
     <step-exchange v-if="step === 'exchange'" :exchange="exchange" @complete="handlerCompleteStep"></step-exchange>
     <step-account v-if="step === 'account'" :exchange="exchange" @complete="handlerCompleteStep"></step-account>
     <step-end v-if="step === 'end'"
-              :currency-from="exchange.currencyFrom"
-              :amount-from="exchange.amountFrom"
-              :id="exchange.id"
-              :address="exchange.address"
-              :qr="exchange.qr"
+              :exchange="exchange"
               @reset="handlerReset"
               @complete="handlerCompleteStep"
     ></step-end>

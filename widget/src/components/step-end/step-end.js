@@ -6,10 +6,15 @@ import Payment from './payment/payment.vue';
 import Transfer from './transfer/transfer.vue';
 
 export default {
-  props: ['currencyFrom', 'amountFrom', 'id', 'address', 'qr'],
+  props: ['exchange'],
   data() {
     return {
       paymentReceived: false,
+      currencyFrom: this.exchange.currencyFrom,
+      amountFrom: this.exchange.amountFrom,
+      address: this.exchange.address,
+      id: this.exchange.id,
+      qr: this.exchange.qr,
     };
   },
   components: {
