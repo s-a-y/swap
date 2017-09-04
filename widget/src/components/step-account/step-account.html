@@ -25,6 +25,7 @@
   </div>
   <div class="widget__step-controls">
     <button class="widget__step-proceed btn"
+            :class="{ _loading: loading }"
             type="button"
             :disabled="isControlDisabled()"
             @click="handlerCompleteStep"

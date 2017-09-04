@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       memoTypes,
+      loading: false,
       currencyFrom: this.exchange.currencyFrom,
       currencyTo: this.exchange.currencyTo,
       amountFrom: this.exchange.amountFrom,
@@ -59,6 +60,10 @@ export default {
       this.updateAccountAddress();
     }, 300),
     handlerCompleteStep() {
+      if (this.loading) {
+        return;
+      }
+
       /**
        * extra1 - memoType, extra2 - memo
        */
@@ -69,22 +74,30 @@ export default {
         email: this.email,
       };
 
+      this.loading = true;
+
       sender
         .getTransfer(this.currencyFrom, this.currencyTo, this.amountTo, this.accountAddress, optional)
-        .then(({ data }) => {
-          this.$emit('complete', {
-            account: this.account,
-            accountAddress: this.accountAddress,
-            address: data.address,
-            id: data.id,
-            qr: data.qr,
-            extra1: this.extra1,
-            extra2: this.extra2,
-            disableExtra: this.disableExtra,
-            refundAddress: this.refundAddress,
-            email: this.email,
-          });
-        });
+        .then(
+          ({ data }) => {
+            this.$emit('complete', {
+              account: this.account,
+              accountAddress: this.accountAddress,
+              address: data.address,
+              id: data.id,
+              qr: data.qr,
+              extra1: this.extra1,
+              extra2: this.extra2,
+              disableExtra: this.disableExtra,
+              refundAddress: this.refundAddress,
+              email: this.email,
+            });
+            this.loading = false;
+          },
+          () => {
+            this.loading = false;
+          },
+        );
     },
     isControlDisabled() {
       if (this.accountAddress) {

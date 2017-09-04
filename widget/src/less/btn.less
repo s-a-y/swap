@@ -33,4 +33,23 @@
       background-color: @btn-simple-bg-hover;
     }
   }
+
+  &._loading {
+    position: relative;
+    padding-right: 46px;
+    padding-left: 46px;
+
+    &:before {
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      display: inline-block;
+      margin-top: -13px;
+      width: 26px;
+      height: 26px;
+      background: url(../svg/spinner.svg) no-repeat;
+      background-size: cover;
+      content: '';
+    }
+  }
 }
