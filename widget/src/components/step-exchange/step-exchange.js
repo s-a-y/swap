@@ -20,10 +20,6 @@ export default {
   },
   methods: {
     handlerCompleteStep() {
-      if (this.isControlDisabled()) {
-        return;
-      }
-
       this.$emit('complete', {
         amountFrom: this.amountFrom,
         amountTo: this.amountTo,

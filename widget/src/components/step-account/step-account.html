@@ -23,14 +23,10 @@
     </div>
   </div>
   <div class="widget__step-controls">
-    <div class="widget__step-proceed btn"
-         :class="{ _disabled: isControlDisabled() }"
-         @click="handlerCompleteStep"
-    >
-      <p class="widget__step-proceed-title">Proceed</p>
-      <p class="widget__step-proceed-subtitle">
-        <span>{{amountFrom}} {{currencyFrom}}</span> -> <span>{{amountTo}} {{currencyTo}}</span>
-      </p>
-    </div>
+    <button class="widget__step-proceed btn"
+            type="button"
+            :disabled="isControlDisabled()"
+            @click="handlerCompleteStep"
+    >Proceed</button>
   </div>
 </form>

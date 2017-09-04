@@ -38,10 +38,6 @@ export default {
         );
     }, 300),
     handlerCompleteStep() {
-      if (this.isControlDisabled()) {
-        return;
-      }
-
       /**
        * extra1 - memoType, extra2 - memo
        */
@@ -63,7 +59,7 @@ export default {
         });
     },
     isControlDisabled() {
-      if (this.address && this.extra1 && this.extra2) {
+      if (this.address) {
         return false;
       }
 
