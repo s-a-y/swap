@@ -2,24 +2,7 @@ import StepExchange from '../step-exchange/step-exchange.vue';
 import StepAccount from '../step-account/step-account.vue';
 import StepEnd from '../step-end/step-end.vue';
 import Info from '../info/info.vue';
-
-class Exchange {
-  constructor() {
-    this.currencyFrom = 'BTC';
-    this.currencyTo = 'XLM';
-    this.amountTo = 1460;
-    this.amountFrom = null;
-    this.account = null;
-    this.accountAddress = null;
-    this.address = null;
-    this.qr = null;
-    this.extra1 = null;
-    this.extra2 = null;
-    this.disableExtra = null;
-    this.refundAddress = null;
-    this.email = null;
-  }
-}
+import Exchange from '../../entities/exchange';
 
 export default {
   name: 'widget',

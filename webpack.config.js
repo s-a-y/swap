@@ -1,9 +1,12 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
-const extractSass = new ExtractTextPlugin({
+const extractStyles = new ExtractTextPlugin({
   filename: 'bundle.css',
 });
+
+const uglifyJS = new UglifyJSPlugin();
 
 const jsLoader = {
   test: /\.js$/,
@@ -18,9 +21,12 @@ const jsLoader = {
 
 const lessLoader = {
   test: /\.less$/,
-  use: extractSass.extract({
+  use: extractStyles.extract({
     use: [{
       loader: 'css-loader',
+      options: {
+        minimize: true,
+      },
     }, {
       loader: 'less-loader',
     }],
@@ -54,7 +60,8 @@ const widgetBundle = {
     rules: [jsLoader, lessLoader, vueLoader, fileLoader],
   },
   plugins: [
-    extractSass,
+    extractStyles,
+    uglifyJS,
   ],
 };
 
@@ -67,6 +74,9 @@ const creatorBundle = {
   module: {
     rules: [jsLoader],
   },
+  plugins: [
+    uglifyJS,
+  ],
 };
 
 module.exports = [widgetBundle, creatorBundle];
