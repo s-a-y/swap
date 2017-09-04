@@ -17,6 +17,8 @@ export default {
       disableExtra: this.exchange.disableExtra,
       extra1: this.exchange.extra1,
       extra2: this.exchange.extra2,
+      refundAddress: this.exchange.refundAddress,
+      email: this.exchange.email,
     };
   },
   methods: {
@@ -60,7 +62,12 @@ export default {
       /**
        * extra1 - memoType, extra2 - memo
        */
-      const optional = { extra1: this.extra1, extra2: this.extra2 };
+      const optional = {
+        extra1: this.extra1,
+        extra2: this.extra2,
+        refundAddress: this.refundAddress,
+        email: this.email,
+      };
 
       sender
         .getTransfer(this.currencyFrom, this.currencyTo, this.amountTo, this.accountAddress, optional)
@@ -74,6 +81,8 @@ export default {
             extra1: this.extra1,
             extra2: this.extra2,
             disableExtra: this.disableExtra,
+            refundAddress: this.refundAddress,
+            email: this.email,
           });
         });
     },
