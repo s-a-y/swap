@@ -48,6 +48,18 @@ export default {
       this.exchangeRate = null;
       this.updateRates();
     },
+    handlerSwapCurrencies() {
+      const amountFrom = this.amountFrom;
+      const currencyFrom = this.currencyFrom;
+      this.currencyFrom = this.currencyTo;
+      this.amountFrom = null;
+      this.currencyTo = currencyFrom;
+      this.amountTo = amountFrom;
+      this.minerFee = null;
+      this.exchangeFee = null;
+      this.exchangeRate = null;
+      this.updateRates();
+    },
     isControlDisabled() {
       if (this.currencyFrom && this.currencyTo && this.amountFrom && this.amountTo) {
         return false;
