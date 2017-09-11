@@ -1,6 +1,6 @@
 class ExchangeWidget {
-  constructor(root) {
-    this.origin = 'http://192.168.10.10:3000';
+  constructor(origin, root) {
+    this.origin = origin;
     this.root = root;
     this.iframe = document.createElement('iframe');
     this.iframe.setAttribute('id', 'exchange-widget');
