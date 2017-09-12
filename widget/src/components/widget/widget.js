@@ -24,7 +24,10 @@ export default {
   methods: {
     postHeight() {
       const body = document.querySelector('body');
-      window.parent.postMessage(body.offsetHeight, '*');
+      window.parent.postMessage({
+        type: 'postHeight',
+        data: body.offsetHeight,
+      }, '*');
     },
     nextStep() {
       const stepIndex = this.steps.findIndex(step => step === this.step);
@@ -46,8 +49,10 @@ export default {
       this.nextStep();
     },
   },
-  created() {
-    window.addEventListener('resize', this.postHeight);
-    this.postHeight();
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.postHeight);
+      this.postHeight();
+    });
   },
 };

@@ -13,8 +13,8 @@ class ExchangeWidget {
   }
 
   setIframeHeight(event) {
-    if (event.origin === this.origin) {
-      this.iframe.setAttribute('height', event.data);
+    if (event.data && event.data.type === 'postHeight') {
+      this.iframe.setAttribute('height', event.data.data);
     }
   }
 }
