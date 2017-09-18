@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     updateAccountAddress() {
-      switch (this.currencyFrom) {
+      switch (this.currencyTo) {
         case 'BTC': {
           this.accountAddress = this.account;
           this.disableExtra = false;
@@ -101,13 +101,6 @@ export default {
     },
     isControlDisabled() {
       if (this.accountAddress) {
-        return false;
-      }
-
-      return true;
-    },
-    isMemoEnable() {
-      if (this.currencyFrom === 'BTC') {
         return false;
       }
 
