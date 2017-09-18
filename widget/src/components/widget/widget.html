@@ -9,10 +9,13 @@
     ></step-end>
   </div>
   <div class="widget__menu">
-    <span v-for="s in steps"
-          class="widget__menu-item" @click="handlerChangeStep(s)"
-          :class="{ _active: s === step }"
-    ></span>
+    <button v-for="(s, i) in steps"
+            class="widget__menu-item"
+            :class="{ _active: s === step }"
+            type="button"
+            :disabled="i > stepIndex"
+            @click="handlerChangeStep(s)"
+    ></button>
   </div>
   <info></info>
 </div>

@@ -30,8 +30,7 @@ export default {
       }, '*');
     },
     nextStep() {
-      const stepIndex = this.steps.findIndex(step => step === this.step);
-      this.step = this.steps[stepIndex + 1];
+      this.step = this.steps[this.stepIndex + 1];
     },
     handlerChangeStep(step) {
       this.step = step;
@@ -47,6 +46,11 @@ export default {
         });
       }
       this.nextStep();
+    },
+  },
+  computed: {
+    stepIndex() {
+      return this.steps.findIndex(step => step === this.step);
     },
   },
   mounted() {

@@ -28,13 +28,23 @@
   padding: 2px;
   width: 14px;
   height: 14px;
+  outline: none;
   border: 2px solid @menu-item-color;
   border-radius: 50%;
   background: #fff;
+  box-shadow: none;
   cursor: pointer;
 
   &:hover {
     border-color: @menu-item-color-active;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    &:hover {
+      border-color: @menu-item-color;
+    }
   }
 
   &._active {
