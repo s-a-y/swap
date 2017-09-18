@@ -4,8 +4,10 @@
 @border-color-focus: #66afe9;
 @color: #536570;
 @color-focus: #000;
+@color-error: #a94442;
 @bg: #fff;
 @bg-disable: #e5e5e5;
+@bg-error: #a94442;
 
 .form-group {
   margin: 0 0 10px;
@@ -41,6 +43,11 @@
 
   &:disabled {
     background-color: @bg-disable;
+  }
+
+  &._error {
+    color: @color-error;
+    border: 1px solid @bg-error;
   }
 }
 

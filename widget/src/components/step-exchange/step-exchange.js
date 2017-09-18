@@ -1,6 +1,6 @@
 import { currencies } from '../../configs';
 import sender from '../../services/sender';
-import rateParser from '../../utils/rateParser';
+import rateParser from '../../utils/rate-parser';
 import debounce from '../../utils/debounce';
 
 export default {
@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       currencies,
+      error: false,
       currencyFrom: this.exchange.currencyFrom,
       currencyTo: this.exchange.currencyTo,
       amountTo: this.exchange.amountTo,
@@ -30,10 +31,16 @@ export default {
     updateRates() {
       sender
         .getRates(this.currencyFrom, this.currencyTo, this.amountTo)
-        .then(({ data }) => {
-          const rate = rateParser(data);
-          Object.assign(this, rate);
-        });
+        .then(
+          ({ data }) => {
+            const rate = rateParser(data);
+            this.error = false;
+            Object.assign(this, rate);
+          },
+          () => {
+            this.error = true;
+          },
+        );
     },
     handlerChangeAmountTo: debounce(function changeAmountTo() {
       this.updateRates();
@@ -61,6 +68,10 @@ export default {
       this.updateRates();
     },
     isControlDisabled() {
+      if (this.error) {
+        return true;
+      }
+
       if (this.currencyFrom && this.currencyTo && this.amountFrom && this.amountTo) {
         return false;
       }

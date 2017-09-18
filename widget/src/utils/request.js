@@ -1,3 +1,5 @@
+import HttpError from './http-error';
+
 const headers = {
   'Content-Type': 'application/json',
 };
@@ -29,14 +31,19 @@ function request(method, url, data) {
   }).then(
     (xhr) => {
       const responseData = parseResponse(xhr.responseText);
+
+      // TODO: Think about status code
+      if (Object.prototype.hasOwnProperty.call(responseData, 'errors')) {
+        throw new HttpError(xhr.status, responseData);
+      }
+
       return {
         status: xhr.status,
         data: responseData,
       };
     },
     (xhr) => {
-      // TODO: Add http error class
-      throw new Error(xhr.status);
+      throw new HttpError(xhr.status);
     },
   );
 }
