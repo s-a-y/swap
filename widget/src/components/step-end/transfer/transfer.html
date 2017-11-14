@@ -1,4 +1,7 @@
-<div class="transfer">
+<div class="transfer" v-if="currencyFrom == 'XLM'">
+  <stellar-qr :address="address" :amount="amountFrom" :currency="currencyFrom" :memo-type="extra1" :memo="extra2"></stellar-qr>
+</div>
+<div class="transfer" v-else-if="currencyFrom != 'XLM'">
   <p>Send exactly {{amountFrom}} {{currencyFrom}} to (excluding mining fee)</p>
   <transfer-address :address="address"></transfer-address>
   <div class="transfer__qr" v-html="qr"></div>
