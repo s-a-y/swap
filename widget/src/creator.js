@@ -1,7 +1,8 @@
 class ExchangeWidget {
-  constructor(origin, root) {
+  constructor(origin, root, apiToken) {
     this.origin = origin;
     this.root = root;
+    this.apiToken = apiToken;
     this.iframe = document.createElement('iframe');
     this.iframe.setAttribute('id', 'exchange-widget');
     this.iframe.setAttribute('src', this.origin);
