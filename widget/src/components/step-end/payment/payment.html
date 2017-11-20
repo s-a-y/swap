@@ -1,9 +1,9 @@
 <div class="payment">
-  <h4>Your payment received.</h4>
+  <h4>Payment received</h4>
   <p v-if="currencyFrom === 'BTC'">Please wait for 1 confirmation, before we can process the exchange.</p>
   <p v-if="currencyFrom === 'XLM'">Transaction has been initiated.</p>
-  <p>You can monitor status here:<br/>
-    <a class="link" target="_blank" :href="'https://live.blockcypher.com/btc/address/' + btcAddress">Bitcoin Address</a><br/>
-    <a class="link" target="_blank" :href="'https://stellarchain.io/address/' + stellarAddress">Stellar Address</a>
+  <p v-if="txIn">You can monitor status here:<br/>
+    <a v-if="txIn" class="link" target="_blank" :href="'https://stellar.expert/explorer/tx/' + txIn">Incoming</a><br/>
+    <a v-if="txOut" class="link" target="_blank" :href="'https://stellar.expert/explorer/tx/' + txOut">Outgoing</a>
   </p>
 </div>

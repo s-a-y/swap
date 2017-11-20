@@ -10,6 +10,8 @@ export default {
   data() {
     return {
       paymentReceived: false,
+      txIn: null,
+      txOut: null,
       currencyFrom: this.exchange.currencyFrom,
       amountFrom: this.exchange.amountFrom,
       accountAddress: this.exchange.accountAddress,
@@ -31,10 +33,12 @@ export default {
     },
   },
   created() {
-    this.orderRef = database.orderPaidRef(this.id);
+    this.orderRef = database.orderPublicRef(this.id);
     this.orderRef.on('value', (snapshot) => {
       const value = snapshot.val();
-      this.paymentReceived = Boolean(value);
+      this.paymentReceived = Boolean(value.paid);
+      this.txIn = value.txs.in;
+      this.txOut = value.txs.out;
     });
   },
   destroyed() {

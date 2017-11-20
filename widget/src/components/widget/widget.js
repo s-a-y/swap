@@ -36,7 +36,7 @@ export default {
       this.step = step;
     },
     handlerReset() {
-      this.exchange = new Exchange();
+      this.exchange = new Exchange(window.location.search.split('=').pop() || 'ja87hmb1');
       this.step = this.steps[0];
     },
     handlerCompleteStep(data) {

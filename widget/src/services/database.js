@@ -6,8 +6,8 @@ class DataBase {
     this.base.initializeApp(configs);
   }
 
-  orderPaidRef(orderId) {
-    const url = `orders/${orderId}/public/paid`;
+  orderPublicRef(orderId) {
+    const url = `orders/${orderId}/public`;
     return this.base.database().ref(url);
   }
 }
