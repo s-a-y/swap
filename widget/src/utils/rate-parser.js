@@ -1,14 +1,13 @@
 export default function currencyParser(data) {
-  const from = data.from.split('/');
-  const to = data.to.split('/');
-
+  const precision = Math.ceil(Math.log10(data.rate));
   return {
-    amountFrom: Number(from[0]),
-    amountTo: Number(to[0]),
-    currencyFrom: from[1],
-    currencyTo: to[1],
-    exchangeFee: data.feePercent,
-    exchangeRate: data.rate,
-    minerFee: data.minerFee,
+    amountFrom: Number(data.fromAmount),
+    amountTo: Number(data.toAmount),
+    currencyFrom: data.fromAsset,
+    currencyTo: data.toAsset,
+    exchangeFee: Math.round(data.feePercent * 10000) / 100,
+    exchangeRate: (precision > 0 ?
+      Number(data.rate).toPrecision(precision) : Number(data.rate).toPrecision(8 + precision)),
+    minerFee: `${data.minerFee} ${data.toAsset}`,
   };
 }

@@ -19,7 +19,7 @@ Live demo can be found [here](https://apay.io/widget/demo.html)
 <script>
   (function() {
     var root = document.getElementById('exchange-widget');
-    new ExchangeWidget('https://swap.apay.io/widget/index.html', root, '<YourAPIToken>');
+    new ExchangeWidget('https://swap.apay.io/widget/index.html?token=<YourAPIToken>', root);
   })()
 </script>
 ```

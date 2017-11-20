@@ -72,6 +72,7 @@ export default {
         extra2: this.extra2,
         refundAddress: this.refundAddress,
         email: this.email,
+        token: this.exchange.token,
       };
 
       this.loading = true;
@@ -85,7 +86,6 @@ export default {
               accountAddress: this.accountAddress,
               address: data.address,
               id: data.id,
-              qr: data.qr,
               extra1: data.extra1,
               extra2: data.extra2,
               disableExtra: this.disableExtra,

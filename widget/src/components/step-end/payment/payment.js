@@ -1,3 +1,3 @@
 export default {
-  props: ['currencyFrom'],
+  props: ['currencyFrom', 'btcAddress', 'stellarAddress'],
 };

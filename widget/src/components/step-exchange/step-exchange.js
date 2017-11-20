@@ -30,7 +30,7 @@ export default {
     },
     updateRates() {
       sender
-        .getRates(this.currencyFrom, this.currencyTo, this.amountTo)
+        .getRates(this.currencyFrom, this.currencyTo, this.amountTo, this.exchange.token)
         .then(
           ({ data }) => {
             const rate = rateParser(data);

@@ -26,9 +26,9 @@
       </div>
     </div>
     <div class="step-exchange__info">
-      <p v-if="exchangeRate">Exchange rate: {{exchangeRate}} {{currencyTo}}/{{currencyFrom}}</p>
-      <p v-if="minerFee">Miner Fee: {{minerFee}} {{currencyTo}}</p>
-      <p v-if="exchangeFee">Exchange Fee: {{exchangeFee}}%</p>
+      <p v-if="exchangeRate">Exchange Rate: ~{{exchangeRate}} {{currencyTo}}/{{currencyFrom}}</p>
+      <p v-if="minerFee">Miner Fee: {{minerFee}}</p>
+      <p v-if="exchangeFee">Fee Included: {{exchangeFee}}%</p>
     </div>
   </div>
   <div class="widget__step-controls">

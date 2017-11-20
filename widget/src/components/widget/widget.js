@@ -12,7 +12,7 @@ export default {
     return {
       steps,
       step: steps[0],
-      exchange: new Exchange(),
+      exchange: new Exchange(window.location.search.split('=').pop() || 'ja87hmb1'),
     };
   },
   components: {

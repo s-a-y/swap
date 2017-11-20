@@ -12,11 +12,11 @@ export default {
       paymentReceived: false,
       currencyFrom: this.exchange.currencyFrom,
       amountFrom: this.exchange.amountFrom,
+      accountAddress: this.exchange.accountAddress,
       address: this.exchange.address,
       extra1: this.exchange.extra1,
       extra2: this.exchange.extra2,
       id: this.exchange.id,
-      qr: this.exchange.qr,
     };
   },
   components: {

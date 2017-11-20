@@ -1,5 +1,6 @@
 export default class Exchange {
-  constructor() {
+  constructor(token) {
+    this.token = token;
     this.currencyFrom = 'BTC';
     this.currencyTo = 'XLM';
     this.amountTo = 1460;
