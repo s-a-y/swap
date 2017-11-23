@@ -29,13 +29,17 @@ export default {
       });
     },
     updateRates() {
+      this.exchangeRate = null;
+      this.amountFrom = null;
       sender
         .getRates(this.currencyFrom, this.currencyTo, this.amountTo, this.exchange.token)
         .then(
           ({ data }) => {
             const rate = rateParser(data);
             this.error = false;
-            Object.assign(this, rate);
+            if (rate.amountTo == this.amountTo) {
+              Object.assign(this, rate);
+            }
           },
           () => {
             this.error = true;
@@ -43,8 +47,10 @@ export default {
         );
     },
     handlerChangeAmountTo: debounce(function changeAmountTo() {
-      this.updateRates();
-    }, 300),
+      if (this.amountTo > 0) {
+        this.updateRates();
+      }
+    }, 700),
     handlerChangeCurrencyTo() {
       const currencyFrom = currencies.find(currency => currency.value !== this.currencyTo);
       this.currencyFrom = currencyFrom.value;
